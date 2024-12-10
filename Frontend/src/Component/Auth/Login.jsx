@@ -143,7 +143,7 @@ function Login() {
               Don't Have An Account?&nbsp;
               <span>
                 <Link to="/registrer" className="font-semibold underline">
-                  Register Now!!
+                  Register Now!
                 </Link>
               </span>
             </p>
