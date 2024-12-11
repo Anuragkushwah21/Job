@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 function Profile() {
   const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
-  console.log(isAuthorized)
+  // console.log(isAuthorized)
   const [loading, setLoading] = useState(true);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
