@@ -50,7 +50,7 @@ function Navbar() {
         }`}
       >
         <div className="logo flex justify-between items-center">
-          <h1 class="text-4xl font-bold text-green-500 text-center">
+          <h1 className="text-4xl font-bold text-green-500 text-center">
             PN JOB PORTAL
           </h1>
 

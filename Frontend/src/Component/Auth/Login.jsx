@@ -25,7 +25,7 @@ function Login() {
         position: "top-center",
       });
 
-      console.log("Login successful:", response.data);
+      // console.log("Login successful:", response.data);
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed!", {
         position: "top-center",

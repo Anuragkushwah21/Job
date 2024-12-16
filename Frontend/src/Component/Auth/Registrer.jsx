@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate} from "react-router-dom";
 import { Context } from "../../main";
 
 function Registrer() {
@@ -24,37 +24,28 @@ function Registrer() {
     setData({ ...data, [name]: value });
   };
 
-  // const navigate = useNavigate();
-
   const submitForm = async (e) => {
     e.preventDefault();
     // console.log(data);
     try {
       const response = await axios.post("/api/signUp", data);
-      // debugger;
       if (response.status === 201) {
         toast.success(response.data.message, {
-          position: "top-left",
+          position: "top-center",
           message: "Register Success",
         });
         setData(job);
         setIsAuthorized(true);
-        // console.log(job);
-        // debugger;
-
-        // Redirect
-        // debugger;
       } else {
         console.error("failed to insert data", error);
       }
-      // debugger;
     } catch (error) {
       console.error("error inserting data", error);
     }
   };
 
   if (isAuthorized) {
-    return <Navigate to={"/home"} />;
+    return <Navigate to={"/"} />;
   }
 
   return (

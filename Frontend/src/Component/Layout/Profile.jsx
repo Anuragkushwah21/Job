@@ -124,7 +124,7 @@ function Profile() {
   return (
     <>
       <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden m-8">
-      <div className="bg-green-500 h-32 flex items-center justify-center">
+        <div className="bg-green-500 h-32 flex items-center justify-center">
           <img
             src={user?.avatar || "../../../public/Image/anuragPi.png"}
             alt="User Avatar"

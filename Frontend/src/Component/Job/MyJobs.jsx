@@ -12,6 +12,7 @@ function MyJobs() {
     const fetchJobs = async () => {
       try {
         const response = await axios.get("/api/employerJobs");
+        console.log(response.data)
         setJobs(response.data.jobs);
         setLoading(false);
       } catch (err) {

@@ -14,7 +14,7 @@ function MyApplication() {
 
   useEffect(() => {
     if (!isAuthorized) {
-      navigateTo("/");
+      navigateTo("/application/me");
       return;
     }
 
@@ -29,7 +29,9 @@ function MyApplication() {
         // console.log(data.applications)
         setApplications(data.applications || []);
       } catch (error) {
-        toast.error(error.response?.data?.message || "Failed to fetch applications");
+        toast.error(
+          error.response?.data?.message || "Failed to fetch applications"
+        );
       }
     };
 
@@ -93,7 +95,9 @@ function MyApplication() {
           )}
         </div>
       )}
-      {modalOpen && <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />}
+      {modalOpen && (
+        <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />
+      )}
     </section>
   );
 }
@@ -125,7 +129,9 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => (
       />
     </div>
     <div className="btn_area">
-      <button onClick={() => deleteApplication(element._id)}>Delete Application</button>
+      <button onClick={() => deleteApplication(element._id)}>
+        Delete Application
+      </button>
     </div>
   </div>
 );

@@ -70,7 +70,7 @@ function Home() {
         <div className="space-y-4">
           {jobs.slice(0, 3).map((job) => (
             <div
-              key={job.id}
+              key={job._id}
               className="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row items-center"
             >
               <div className="flex-shrink-0">
@@ -88,8 +88,8 @@ function Home() {
                     {job.location}
                   </span>
                   <span className="flex items-center mr-3">
-                    <i className="far fa-clock text-blue-600 mr-2"></i>
-                    {job.type}
+                  <i className="far fa-clock text-blue-600 mr-2"></i>
+                    {job.jobType}
                   </span>
                   <span className="flex items-center">
                     <i className="far fa-money-bill-alt text-blue-600 mr-2"></i>

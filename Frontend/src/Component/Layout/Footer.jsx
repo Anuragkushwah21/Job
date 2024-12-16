@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Context } from "../../main";
 
 function Footer() {
-  // const { isAuthorized } = useContext(Context);
+  const { isAuthorized } = useContext(Context);
   return (
     <>
       <footer
         // We have use Location insted of auth
-        // className={isAuthorized ? "footerShow" : "footerHide"}
+        className={isAuthorized ? "footerShow" : "footerHide"}
         style={{ backgroundColor: "black" }}
       >
         <div className="max-w-[1120px]  pt-[2cm]  grid grid-cols-1 md:grid-cols-3 mx-auto">
@@ -97,7 +97,7 @@ function Footer() {
         </p>
 
         <h1 className="text-[#337ab7] text-center">
-          <button className="text-black">
+          <button className="text-white mb-2">
             <Link to="https://github.com/Anuragkushwah21">
               Made By_Anurag kushwah(9669907552)
             </Link>

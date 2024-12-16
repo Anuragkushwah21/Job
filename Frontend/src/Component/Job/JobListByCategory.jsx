@@ -52,7 +52,7 @@ function JobListByCategory()  {
                           {job.location}
                         </span>
                         <span className="text-truncate me-3">
-                        <i class="fa-solid fa-list"></i>
+                        <i className="fa-solid fa-list"></i>
                           {job.category}
                         </span>
                         <span className="text-truncate me-0">

@@ -71,7 +71,7 @@ class CategoryController {
   };
   static getEmployerCategory = async (req, res) => {
     try {
-      const { role  , name } = req.UserData; // use req.UserData consistently
+      const { role, name } = req.UserData; // use req.UserData consistently
       if (role === "jobSeeker") {
         return res.status(400).json({
           status: "failed",
@@ -109,17 +109,31 @@ class CategoryController {
   static deleteCategory = async (req, res) => {
     try {
       const { id } = req.params;
+
+      // Check if the category ID is provided
       if (!id) {
         return res
           .status(400)
-          .json({ status: "failed", message: "Category not found" });
+          .json({ status: "failed", message: "Category ID is required." });
       }
+
+      // Check if the category exists
+      const category = await Category.findById(id);
+      if (!category) {
+        return res
+          .status(404)
+          .json({ status: "failed", message: "Category not found." });
+      }
+
+      // Delete the category
       await Category.findByIdAndDelete(id);
+
       return res
         .status(200)
-        .json({ status: "success", message: "Category deleted successfully" });
+        .json({ status: "success", message: "Category deleted successfully." });
     } catch (error) {
-      console.error(error);
+      console.error("Error deleting category:", error);
+
       return res
         .status(500)
         .json({ status: "failed", message: "Internal server error." });

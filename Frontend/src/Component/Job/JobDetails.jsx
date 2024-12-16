@@ -84,6 +84,10 @@ function JobDetails(){
             </p>
             <p className="d-flex gap-md-3 gap-2">
               <i className="fa-solid fa-fire"></i>
+              <strong>job Type:</strong> {job.jobType}
+            </p>
+            <p className="d-flex gap-md-3 gap-2">
+              <i className="fa-solid fa-fire"></i>
               <strong>Key Skill:</strong> {job.keySkill}
             </p>
             <p className="d-flex gap-md-3 gap-2">

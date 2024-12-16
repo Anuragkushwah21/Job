@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import {Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./Component/Layout/Navbar";
 import Login from "./Component/Auth/Login";
 import Registrer from "./Component/Auth/Registrer";
@@ -13,8 +13,6 @@ import MyJobs from "./Component/Job/MyJobs";
 import NotFound from "./Component/NotFound/NotFound";
 import Footer from "./Component/Layout/Footer";
 import "./App.css";
-import { Context } from "./main";
-import axios from "axios";
 import { Toaster } from "react-hot-toast";
 import PopularCategories from "./Component/Home/PopularCategories";
 import About from "./Component/Layout/About";
@@ -24,9 +22,7 @@ import JobListByCategory from "./Component/Job/JobListByCategory";
 import ResetPassword from "./Component/Auth/ResetPassword";
 import JobUpdate from "./Component/Job/JobUpdate";
 
-
 function App() {
-  // const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
   const location = useLocation(); // Get the current location
 
   const hideNavbarAndFooter =
@@ -50,19 +46,15 @@ function App() {
         <Route path="/notfound" element={<NotFound />} />
         <Route path="/category" element={<PopularCategories />} />
         <Route path="/categoryInsert" element={<CategoryInsert />} />
-        <Route path="/categoryJobs/:cName" element={<JobListByCategory/>} />
+        <Route path="/categoryJobs/:cName" element={<JobListByCategory />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/reset-password?/:token" element={<ResetPassword/>} />
-
+        <Route path="/reset-password?/:token" element={<ResetPassword />} />
       </Routes>
       {!hideNavbarAndFooter && <Footer />}
-      <Toaster/>
+      <Toaster />
     </>
   );
 }
 
 export default App;
-
-
-
