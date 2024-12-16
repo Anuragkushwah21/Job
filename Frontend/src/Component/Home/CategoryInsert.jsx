@@ -26,7 +26,7 @@ function CategoryInsert() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get("/api/employerCategory");
-      // console.log(response.data)
+      console.log(response.data)
       setCategories(response.data.category); // Assuming API returns an array of category objects
     } catch (error) {
       console.error("Error fetching Category listings:", error);
