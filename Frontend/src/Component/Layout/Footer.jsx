@@ -91,15 +91,15 @@ function Footer() {
         </div>
         <hr className="max-w-[1020px] text-slate-300 mx-auto mb-12" />
         <p className="text-center mb-5 text-white font-light text-[14px]">
-          Copyright © 2020 |
+          Copyright © 2024 |
           <span className="font-bold">PN INFOSYS IT COMPANY IN GWALIOR !</span>.
           All rights reserved.
         </p>
 
         <h1 className="text-[#337ab7] text-center">
           <button className="text-black">
-            <Link to="https://www.instagram.com/nakul__pal__/">
-              Made By_Nakul Pal(9630849332)
+            <Link to="https://github.com/Anuragkushwah21">
+              Made By_Anurag kushwah(9669907552)
             </Link>
           </button>
         </h1>

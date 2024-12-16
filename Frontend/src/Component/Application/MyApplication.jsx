@@ -61,7 +61,7 @@ function MyApplication() {
 
   return (
     <section className="my_applications page">
-      {user?.role === "JobSeeker" ? (
+      {user?.role === "jobSeeker" ? (
         <div className="container">
           <h1 className="text-3xl">My Applications</h1>
           {applications.length === 0 ? (

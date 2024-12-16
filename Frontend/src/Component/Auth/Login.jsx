@@ -6,10 +6,11 @@ import { Context } from "../../main";
 
 function Login() {
   const { isAuthorized, setIsAuthorized } = useContext(Context);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal
+  const [forgotEmail, setForgotEmail] = useState(""); // Email for password reset
 
   const SubmitForm = async (e) => {
     e.preventDefault();
@@ -26,19 +27,28 @@ function Login() {
 
       console.log("Login successful:", response.data);
     } catch (error) {
-      // Handle error response
-      if (error.response && error.response.data) {
-        // Error from server with a message
-        toast.error(error.response.data.message || "Login failed!", {
-          position: "top-center",
-        });
-      } else {
-        // Network or unexpected error
-        toast.error("Something went wrong. Please try again later.", {
-          position: "top-center",
-        });
-      }
+      toast.error(error.response?.data?.message || "Login failed!", {
+        position: "top-center",
+      });
       console.log("Login error:", error);
+    }
+  };
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/forgotPassword", {
+        email: forgotEmail,
+      });
+      toast.success(response.data.message || "Password reset link sent!", {
+        position: "top-center",
+      });
+      setIsModalOpen(false); // Close modal after successful submission
+      setForgotEmail(""); // Clear email input
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to send reset link.", {
+        position: "top-center",
+      });
     }
   };
 
@@ -105,30 +115,19 @@ function Login() {
               >
                 Select Role:
               </label>
-              <div className="relative">
-                <select
-                  name="role"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  id="role"
-                  className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                >
-                  <option value="" disabled hidden>
-                    Select Role
-                  </option>
-                  <option value="employer">Employer</option>
-                  <option value="jobSeeker">Job Seeker</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M5.293 7.293l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 0 0-1.414-1.414L10 10.586 6.707 6.879a1 1 0 0 0-1.414 1.414z" />
-                  </svg>
-                </div>
-              </div>
+              <select
+                name="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                id="role"
+                className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+              >
+                <option value="" disabled hidden>
+                  Select Role
+                </option>
+                <option value="employer">Employer</option>
+                <option value="jobSeeker">Job Seeker</option>
+              </select>
             </div>
 
             <div className="flex items-center justify-center">
@@ -141,15 +140,59 @@ function Login() {
             </div>
             <p className="text-md pt-3">
               Don't Have An Account?&nbsp;
-              <span>
-                <Link to="/registrer" className="font-semibold underline">
-                  Register Now!
-                </Link>
+              <Link to="/registrer" className="font-semibold underline">
+                Register Now!
+              </Link>
+              <span
+                className="font-semibold underline cursor-pointer text-blue-500 ml-3"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Forgot Password!
               </span>
             </p>
           </form>
         </div>
       </div>
+
+      {/* Modal for Forgot Password */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
+            <h2 className="text-lg font-bold mb-4">Forgot Password</h2>
+            <form onSubmit={handleForgotPassword}>
+              <label
+                htmlFor="forgot-email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Enter your email:
+              </label>
+              <input
+                type="email"
+                id="forgot-email"
+                className="mt-2 block w-full border border-gray-300 rounded py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Email"
+                value={forgotEmail}
+                onChange={(e) => setForgotEmail(e.target.value)}
+              />
+              <div className="mt-4 flex justify-end space-x-3">
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                  Send Reset Link
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

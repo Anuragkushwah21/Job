@@ -50,11 +50,10 @@ function Navbar() {
         }`}
       >
         <div className="logo flex justify-between items-center">
-          <img
-            src="/Image/images.jpeg"
-            alt="Logo"
-            className="w-[2.5cm] md:full ps-[0.6cm]"
-          />
+          <h1 class="text-4xl font-bold text-green-500 text-center">
+            PN JOB PORTAL
+          </h1>
+
           {/* mobile icon */}
           <button onClick={() => setOpen(!open)} className="md:hidden">
             <svg
@@ -75,7 +74,7 @@ function Navbar() {
         </div>
 
         <div className="menu md:flex hidden">
-          <ul className="md:flex gap-5 text-black font-semibold text-[17px]">
+          <ul className="md:flex gap-5 text-black font-semibold text-[17px] mt-2">
             <li className="nav-item">
               <Link to="/" onClick={() => setOpen(false)}>
                 Home

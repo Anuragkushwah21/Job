@@ -21,6 +21,9 @@ import About from "./Component/Layout/About";
 import Profile from "./Component/Layout/Profile";
 import CategoryInsert from "./Component/Home/CategoryInsert";
 import JobListByCategory from "./Component/Job/JobListByCategory";
+import ResetPassword from "./Component/Auth/ResetPassword";
+import JobUpdate from "./Component/Job/JobUpdate";
+
 
 function App() {
   // const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
@@ -43,12 +46,14 @@ function App() {
         <Route path="/application/me" element={<MyApplication />} />
         <Route path="/job/post" element={<PostJob />} />
         <Route path="/job/me" element={<MyJobs />} />
+        <Route path="/jobUpdate/:id" element={<JobUpdate />} />
         <Route path="/notfound" element={<NotFound />} />
         <Route path="/category" element={<PopularCategories />} />
         <Route path="/categoryInsert" element={<CategoryInsert />} />
         <Route path="/categoryJobs/:cName" element={<JobListByCategory/>} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/reset-password?/:token" element={<ResetPassword/>} />
 
       </Routes>
       {!hideNavbarAndFooter && <Footer />}
