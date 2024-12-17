@@ -40,7 +40,6 @@ class CategoryController {
       });
     }
   };
-
   static getallCategory = async (req, res) => {
     try {
       const data = await Category.find(); // Sort by createdAt in descending order (-1)
@@ -140,7 +139,6 @@ class CategoryController {
       });
     }
   };
-
   static deleteCategory = async (req, res) => {
     try {
       const { id } = req.params;

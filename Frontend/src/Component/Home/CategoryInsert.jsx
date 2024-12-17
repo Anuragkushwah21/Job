@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function CategoryInsert() {
   const [categoryName, setCategory] = useState("");
   const [categories, setCategories] = useState([]); // Initialize as an array
   const [icon, setIcon] = useState("");
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +44,12 @@ function CategoryInsert() {
       toast.error(error.response?.data?.message || "An error occurred while deleting");
     }
   };
+  navigate("/categoryInsert")
 
   useEffect(() => {
     fetchCategories();
   }, []);
+
 
   return (
     <>

@@ -85,7 +85,7 @@ function JobListByCategory()  {
         </div>
       </div>
     ) : (
-      <Navigate to="/" />
+      <Navigate to={"/"} />
     );
   }
 
