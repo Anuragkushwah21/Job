@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy: {
       '/api':{
-        target: 'http://localhost:3000',
+        target: 'https://job-bakend.onrender.com',
         changeOrigin: true,
       },
     },
