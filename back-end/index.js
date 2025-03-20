@@ -20,7 +20,7 @@ const cors = require("cors");
 
 app.use(cors(
   cors({
-    origin: "https://job-bakend.onrender.com",
+    origin: "https://flourishing-marigold-2c29d3.netlify.app",
     credentials: true,
   })
 )); //for api communication in react
