@@ -195,7 +195,7 @@ class userController {
   static updateProfile = async (req, res) => {
     try {
       const { id } = req.UserData;
-      const { name, email, image } = req.body;
+      const { name, email } = req.body;
       if (req.files) {
         const user = await userModel.findById(id);
         const imageID = user.image.public_id;
@@ -231,7 +231,9 @@ class userController {
         success: true,
         updateUserProfile,
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   static sendResetPasswordMail = async (name, email, token) => {
     try {

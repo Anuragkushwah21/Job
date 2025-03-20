@@ -18,7 +18,18 @@ const app = express();
 
 const cors = require("cors");
 
-app.use(cors()); //for api communication in react
+app.use(cors(
+  cors({
+    origin: "https://flourishing-marigold-2c29d3.netlify.app",
+    credentials: true,
+  })
+)); //for api communication in react
+// app.use(cors(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// )); //for api communication in react
 //file upload
 const fileupload = require("express-fileupload");
 //file upload
