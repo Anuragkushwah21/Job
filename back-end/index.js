@@ -20,7 +20,7 @@ const cors = require("cors");
 
 app.use(cors(
   cors({
-    origin: "https://flourishing-marigold-2c29d3.netlify.app",
+    origin: "https://job-pink-pi.vercel.app/",
     credentials: true,
   })
 )); //for api communication in react

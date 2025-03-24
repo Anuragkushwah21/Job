@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy: {
       '/api':{
-        target: 'https://job-bakend.onrender.com',
+        target: 'job-backend-nu.vercel.app',
         changeOrigin: true,
       },
     },
