@@ -21,6 +21,7 @@ const cors = require("cors");
 app.use(cors(
   cors({
     origin: "https://job-pink-pi.vercel.app/",
+    methods:"GET,PUT,POST,DELETE",
     credentials: true,
   })
 )); //for api communication in react
